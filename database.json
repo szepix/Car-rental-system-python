@@ -1,0 +1,104 @@
+[
+    {
+        "Type": "Sportback",
+        "Brand": "BMW",
+        "Name": "X1",
+        "Number of seats": "5",
+        "Type of fuel and fuel Consumption per 100km": "Diesel, 7",
+        "Drive Type": "AWD",
+        "Additional": null,
+        "Reservation": null,
+        "Last reserved": null,
+        "Rent": null
+    },
+    {
+        "Type": "Van",
+        "Brand": "Volvo",
+        "Name": "Splinter",
+        "Number of seats": "2",
+        "Type of fuel and fuel Consumption per 100km": "Diesel, 14",
+        "Drive Type": "FWD",
+        "Additional": {
+            "Max cargo volume": "1500L"
+        },
+        "Reservation": null,
+        "Last reserved": null,
+        "Rent": null
+    },
+    {
+        "Type": "Sportback",
+        "Brand": "BMW",
+        "Name": "X1",
+        "Number of seats": "5",
+        "Type of fuel and fuel Consumption per 100km": "Diesel, 7",
+        "Drive Type": "AWD",
+        "Additional": null,
+        "Reservation": null,
+        "Last reserved": null,
+        "Rent": null
+    },
+    {
+        "Type": "Van",
+        "Brand": "Volvo",
+        "Name": "Splinter",
+        "Number of seats": "2",
+        "Type of fuel and fuel Consumption per 100km": "Diesel, 14",
+        "Drive Type": "FWD",
+        "Additional": {
+            "Max cargo volume": "1500L"
+        },
+        "Reservation": null,
+        "Last reserved": null,
+        "Rent": null
+    },
+    {
+        "Type": "Van",
+        "Brand": "Mercedes",
+        "Name": "Splinter",
+        "Number of seats": "2",
+        "Type of fuel and fuel Consumption per 100km": "Diesel, 14",
+        "Drive Type": "AWD",
+        "Additional": {
+            "Max cargo volume": "1500L"
+        },
+        "Reservation": {
+            "Reservation date": "12.01.2021",
+            "Due Reservation Date": "29.01.2021",
+            "Who reserved": "Matt"
+        },
+        "Last reserved": null,
+        "Rent": null
+    },
+    {
+        "Type": "Truck",
+        "Brand": "Volvo",
+        "Name": "Cargo",
+        "Number of seats": "2",
+        "Type of fuel and fuel Consumption per 100km": "15, Diesel",
+        "Drive Type": "AWD",
+        "Additional": {
+            "Load": "1500Kg",
+            "Has trailer": false,
+            "Max cargo volume": "1500L"
+        },
+        "Reservation": null,
+        "Last reserved": null,
+        "Rent": null
+    },
+    {
+        "Type": "Truck",
+        "Brand": "Volvo",
+        "Name": "Cargo",
+        "Number of seats": "2",
+        "Type of fuel and fuel Consumption per 100km": "15, Diesel",
+        "Drive Type": "AWD",
+        "Additional": {
+            "Load": "1500Kg",
+            "Has trailer": "Fuel Tank",
+            "Max cargo volume": "1500L"
+        },
+        "Reservation": null,
+        "Last reserved": null,
+        "Rent": null
+    }
+]
