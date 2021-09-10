@@ -28,10 +28,7 @@ class CarRentalWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.clicked = None
-        if read_from_database():
-            self.cars = read_from_database()
-        else:
-            self.cars = []
+        self.cars = read_from_database() or []
         if self.cars:
             self.cars_dict = cars_as_dict(self.cars)
         self.ui.pages.setCurrentIndex(0)
@@ -62,9 +59,8 @@ class CarRentalWindow(QMainWindow):
         """
         cars = []
         for car in self.cars:
-            if car.reservation:
-                if car.reservation.check_expiration() == "EXPIRED":
-                    car.reservation = None
+            if car.reservation and car.reservation.check_expiration() == "EXPIRED":
+                car.reservation = None
             cars.append(car)
         self.cars_dict = write_to_database(cars)
         self.cars = read_from_database()

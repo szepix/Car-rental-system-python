@@ -32,8 +32,8 @@ def overdue_cars(cars):
     returns a list
     """
     today = datetime.now().date()
-    overdue = []
     if cars:
+        overdue = []
         for car in cars:
             rent_info = car.rent
             if rent_info:
@@ -50,53 +50,50 @@ def search_database(criteria, cars):
     iterates through dictionary and checks if criteria meet
     return a list
     """
-    criteria_meeting = []
-    car_index = 0
     cars_as_list = cars_as_dict(cars)
-    if len(criteria) != 0:
-        for car in cars_as_list:
-            criteria_met = 0
-            criteria_size = len(criteria)
-            for crit_name in criteria:
-                crit = criteria[crit_name]
-                car_crit = car[crit_name]
-                if isinstance(crit, dict):
-                    if crit_name == 'Rent':
-                        if car_crit is not None and crit['Return date'] is not None:
-                            car_date = datetime.strptime(car_crit['Return date'], '%d.%m.%Y').date()
-                            crit_date = datetime.strptime(crit['Return date'], '%d.%m.%Y').date()
-                        if car_crit is None or crit['Return date'] is None or car_date < crit_date:
-                            criteria_met += 1
-                        continue
-                    if crit_name == 'Reservation':
-                        if car_crit is not None and crit['Due Reservation Date'] is not None:
-                            car_date = datetime.strptime(car_crit['Due Reservation Date'], '%d.%m.%Y').date()
-                            crit_date = datetime.strptime(crit['Due Reservation Date'], '%d.%m.%Y').date()
-                        if car_crit is None or crit['Due Reservation Date'] is None or car_date < crit_date:
-                            criteria_met += 1
-                        continue
-
-                    criteria_size += len(crit)
-                    for add in crit:
-                        if crit[add] != '':
-                            try:
-                                if crit[add] == car_crit[add] or crit[add] == '':
-                                    criteria_met += 1
-                            except Exception:
-                                pass
-                        else:
-                            criteria_met += 1
-                    criteria_met += 1
-                else:
-                    if crit == car_crit or crit == '':
-                        criteria_met += 1
-            if(criteria_met == criteria_size):
-                car_class = cars[car_index]
-                criteria_meeting.append(car_class)
-            car_index += 1
-        return criteria_meeting
-    else:
+    if len(criteria) == 0:
         return []
+
+    criteria_meeting = []
+    for car_index, car in enumerate(cars_as_list):
+        criteria_met = 0
+        criteria_size = len(criteria)
+        for crit_name in criteria:
+            crit = criteria[crit_name]
+            car_crit = car[crit_name]
+            if isinstance(crit, dict):
+                if crit_name == 'Rent':
+                    if car_crit is not None and crit['Return date'] is not None:
+                        car_date = datetime.strptime(car_crit['Return date'], '%d.%m.%Y').date()
+                        crit_date = datetime.strptime(crit['Return date'], '%d.%m.%Y').date()
+                    if car_crit is None or crit['Return date'] is None or car_date < crit_date:
+                        criteria_met += 1
+                    continue
+                if crit_name == 'Reservation':
+                    if car_crit is not None and crit['Due Reservation Date'] is not None:
+                        car_date = datetime.strptime(car_crit['Due Reservation Date'], '%d.%m.%Y').date()
+                        crit_date = datetime.strptime(crit['Due Reservation Date'], '%d.%m.%Y').date()
+                    if car_crit is None or crit['Due Reservation Date'] is None or car_date < crit_date:
+                        criteria_met += 1
+                    continue
+
+                criteria_size += len(crit)
+                for add in crit:
+                    if crit[add] != '':
+                        try:
+                            if crit[add] == car_crit[add]:
+                                criteria_met += 1
+                        except Exception:
+                            pass
+                    else:
+                        criteria_met += 1
+                criteria_met += 1
+            elif crit in [car_crit, '']:
+                criteria_met += 1
+        if(criteria_met == criteria_size):
+            car_class = cars[car_index]
+            criteria_meeting.append(car_class)
+    return criteria_meeting
 
 
 def reserved_cars(cars):
