@@ -108,7 +108,7 @@ def cars_as_dict(cars):
                 'Max cargo volume': volume
             }
 
-        if type == "Van":
+        elif type == "Van":
             volume = car.volume
             additional = {
                 'Max cargo volume': volume

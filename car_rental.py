@@ -175,9 +175,7 @@ class Reservation:
                     self.due_reservation_date = f'{due_reservation_date}'
                 else:
                     raise InvalidDateRange
-            except ValueError:
-                raise InvalidDate
-            except AttributeError:
+            except (ValueError, AttributeError):
                 raise InvalidDate
 
     def check_expiration(self):
@@ -205,9 +203,7 @@ class Rent:
                 self.return_date = f'{return_date}'
             else:
                 raise InvalidDateRange
-        except ValueError:
-            raise InvalidDate
-        except AttributeError:
+        except (ValueError, AttributeError):
             raise InvalidDate
         if self.return_date is None:
             self.overdue = None
